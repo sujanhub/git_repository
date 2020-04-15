@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{% url 'index' %}">Navbar</a>
+          <a class="nav-item nav-link active" href="{% url 'admin:index' %}">Admin </a>
+          <a class="nav-item nav-link" href="{% url 'user_app:register' %}">Register</a>
+
+
+
+{% if user.is_authenticated %}
+  <li><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
+{% else %}
+  <li><a class="navbar-link" href="{% url 'user_app:user_login' %}">Login</a><li>
+
+{% endif %}
+
+    </nav>
+  {% block body_block %}
+    {% endblock %}
+  </body>
+</html>
